@@ -1,0 +1,52 @@
+<!doctype html> <html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/css/uikit.min.css" />
+
+
+    <link rel="stylesheet" href="main.css" />
+    <script src="main.js"></script>
+    <title> Enigma Machine </title>
+</head>
+
+<body class="uk-background-secondary uk-light uk-padding" uk-height-viewport="expand:true">
+
+    <div class="uk-padding-small uk-padding-remove-horizontal uk-child-width-expand">
+        <textarea class="uk-input uk-height-small"></textarea>
+    </div>
+
+    <div class="uk-padding-small uk-padding-remove-horizontal uk-child-width-expand
+                uk-flex uk-flex-row">
+        <div keyboard class="uk-width-5-6 uk-flex uk-flex-wrap uk-child-width-1-6" ></div>
+        <div control class="uk-width-1-6 uk-child-width-expand" >
+            <button onclick="del()" class="uk-button uk-button-default"> del </button>
+            <button onclick="bck()" class="uk-button uk-button-default"> bck </button>
+            <button onclick="enc()" class="uk-button uk-button-default"> enc </button>
+        </div>
+    </div>
+
+    <script>
+
+    window.onload = ()=>{
+
+        const keys = "0123456789abcdefghijklmnñopqrstuvwxyz";
+        const bord = document.querySelector("[keyboard]");
+        let   tecl = "";
+
+        for( item of keys ){
+             tecl += `<button onclick="add('${item}')" class="uk-button uk-button-default"> ${item} </button>`;
+        }    tecl += `<button onclick="add(' ')" class="uk-button uk-button-default uk-width-expand"> SPACE </button>`;
+        
+        bord.innerHTML = tecl;
+
+    }
+    </script>
+
+</bofy>
+
+</html>
