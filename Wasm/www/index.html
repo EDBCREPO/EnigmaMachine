@@ -1,0 +1,60 @@
+<!DOCTYPE html> <html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <title> Enigma Machine </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/uikit.css">
+    <script src="wasm/main.js"></script>
+</head>
+
+<body class="uk-flex uk-flex-center uk-flex-middle uk-flex-column
+             uk-height-expand uk-background-dark uk-gap">
+
+    <div class="uk-border uk-rounded uk-flex uk-flex-column uk-gap uk-padding">
+
+        <h1> WASM-Based Enigma Machine! </h1>
+
+        <textarea placeholder="place your message here..."
+                  class="uk-input uk-height-medium" 
+                  name="" id="" d
+        ></textarea>
+
+        <button class="uk-button uk-button-primary" onclick="encrypt()">
+            Encrypt Message
+        </button>
+
+    </div>
+
+    <div class="uk-border uk-rounded uk-flex-middle uk-padding">
+
+        <input type="number" max="9" min="0" value="0" class="uk-input uk-h1 uk-text-center" a>
+        <input type="number" max="9" min="0" value="0" class="uk-input uk-h1 uk-text-center" b>
+        <input type="number" max="9" min="0" value="0" class="uk-input uk-h1 uk-text-center" c>
+
+    </div>
+
+    <script> function encrypt() {
+
+        let a = Number( document.querySelector("[a]").value );
+        let b = Number( document.querySelector("[b]").value );
+        let c = Number( document.querySelector("[c]").value );
+        let d = document.querySelector("[d]").value.toUpperCase();
+
+        if( d.length==0 ){ alert( "add a message" ); return; }
+
+        document.querySelector("[d]").value = module.encrypt( d, a, b, c );
+
+    } </script>
+
+    <script> window.addEventListener("load",()=>{
+        Module().then(( ev )=>{
+            window.module = ev;
+        }).catch(()=>{
+            alert("something went wrong");
+        })
+    }); </script>
+
+
+</body>
+
+</html>
